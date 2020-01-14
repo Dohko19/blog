@@ -27,7 +27,41 @@
 						<label for="email">E-mail:</label>
 						<input type="email" name="email" value="{{ old('email', $user->email) }}" class="form-control">
 					</div>
+
+					<div class="form-group">
+						<label for="password">Contraseña:</label>
+						<input type="password" name="password" class="form-control" placeholder="Contraseña">
+						<span class="help-block">Dejar en blanco si no quieres cambiar la contraseña</span>
+					</div>
+
+					<div class="form-group">
+						<label for="password_confirmation">Repite Contraseña:</label>
+						<input type="password" name="password_confirmation" class="form-control" placeholder="Repite la Contraseña">
+					</div>
 					<button class="btn btn-primary btn-block">Actualizar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h3 class="box-title">Roles y permisos</h3>
+			</div>
+			<div class="box-body">
+				<form method="POST" action="{{ route('admin.users.roles.update', $user) }}">
+					@csrf
+					@method('PUT')
+					@foreach ($roles as $id => $name)
+						<div class="checkbox">
+							<label>
+								<input name="roles[]" type="checkbox" value="{{ $id }}"
+								{{ $user->roles->contains($id) ? 'checked' : '' }} >
+								{{ $name }}
+							</label>
+						</div>
+					@endforeach
+					<button class="btn btn-primary btn-block">Actualizar roles</button>
 				</form>
 			</div>
 		</div>
