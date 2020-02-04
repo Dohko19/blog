@@ -47,4 +47,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function scopeAllowed($query)
+    {
+        if (auth()->user()->can('view', $this))
+        {
+            return $query;
+        }
+            return $query->where('id', auth()->id());
+    }
+
+    function getRoleDisplayNames()
+    {
+        return $this->roles->pluck('display_name')->implode(', ');
+    }
 }

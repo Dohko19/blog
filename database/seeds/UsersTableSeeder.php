@@ -26,10 +26,17 @@ class UsersTableSeeder extends Seeder
         $updatePostsPermission = Permission::create(['name' => 'Update posts']);
         $deletePostsPermission = Permission::create(['name' => 'Delete posts']);
 
+        $viewUsersPermission = Permission::create(['name' => 'View users']);
+        $createUsersPermission = Permission::create(['name' => 'Create users']);
+        $updateUsersPermission = Permission::create(['name' => 'Update users']);
+        $deleteUsersPermission = Permission::create(['name' => 'Delete users']);
+
+        $updateRolesPermission = Permission::create(['name' => 'Update roles']);
+
         $admin = new User;
         $admin->name = "Daniel";
         $admin->email = "admin@email.com";
-        $admin->password = bcrypt('123123');
+        $admin->password = '123123';
         $admin->save();
 
         $admin->assignRole($adminRole);
@@ -37,7 +44,7 @@ class UsersTableSeeder extends Seeder
         $writer = new User;
         $writer->name = "Luis";
         $writer->email = "luis@email.com";
-        $writer->password = bcrypt('123123');
+        $writer->password = '123123';
         $writer->save();
 
         $writer->assignRole($writerRole);

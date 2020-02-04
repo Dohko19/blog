@@ -186,7 +186,7 @@ desired effect
 
                 <p>
                   {{ auth()->user()->name }} -
-                  {{ auth()->user()->roles->count() ? auth()->user()->roles->first()->name : '' }}
+                  {{ auth()->user()->roles->count() ? auth()->user()->getRoleDisplayNames() : '' }}
                   <small>Desde {{ auth()->user()->created_at->format('d/M/Y') }}</small>
                 </p>
               </li>
