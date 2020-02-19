@@ -72,6 +72,16 @@ class UsersTableSeeder extends Seeder
             'display_name' => 'Borrar Roles'
         ]);
 
+        $viewPermissionsPermission = Permission::create([
+            'name' => 'View permissions',
+            'display_name' => 'Ver Permisos'
+        ]);
+
+        $updatePermissionsPermission = Permission::create([
+            'name' => 'Update permissions',
+            'display_name' => 'Actualizar Permisos'
+        ]);
+
         $admin = new User;
         $admin->name = "Daniel";
         $admin->email = "admin@email.com";
