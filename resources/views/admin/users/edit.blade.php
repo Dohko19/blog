@@ -69,7 +69,7 @@
 				<form method="POST" action="{{ route('admin.users.permissions.update', $user) }}">
 					@csrf
 					@method('PUT')
-					@include('admin.permissions.checkboxes', ['some' => 'data'])
+					@include('admin.permissions.checkboxes', ['model' => $user])
 					<button class="btn btn-primary btn-block">Actualizar permisos</button>
 				</form>
 				@else

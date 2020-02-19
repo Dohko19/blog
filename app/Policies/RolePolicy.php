@@ -30,7 +30,7 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        $user->hasRole('Admin') || $user->hasPermissionTo('View roles');
+        return $user->hasRole('Admin') || $user->hasPermissionTo('View roles');
     }
 
     /**
