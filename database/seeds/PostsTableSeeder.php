@@ -76,5 +76,41 @@ class PostsTableSeeder extends Seeder
         $post->save();
 
         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 4']));
+
+        $post = new Post;
+        $post->title = "Mi quinto Post";
+        $post->url = str_slug("Mi quinto Post");
+        $post->excerpt = "Extracto de mi quinto post";
+        $post->body = "<p>Cuerpo de mi quinto post</p>";
+        $post->published_at = Carbon::now()->subDays(1);
+        $post->category_id = 1;
+        $post->user_id = 2;
+        $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 5']));
+
+        $post = new Post;
+        $post->title = "Mi sexto Post";
+        $post->url = str_slug("Mi sexto Post");
+        $post->excerpt = "Extracto de mi sexto post";
+        $post->body = "<p>Cuerpo de mi sexto post</p>";
+        $post->published_at = Carbon::now()->subDays(1);
+        $post->category_id = 1;
+        $post->user_id = 2;
+        $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 6']));
+
+        $post = new Post;
+        $post->title = "Mi septimo Post";
+        $post->url = str_slug("Mi septimo Post");
+        $post->excerpt = "Extracto de mi septimo post";
+        $post->body = "<p>Cuerpo de mi septimo post</p>";
+        $post->published_at = Carbon::now()->subDays(1);
+        $post->category_id = 1;
+        $post->user_id = 2;
+        $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Etiqueta 7']));
     }
 }
