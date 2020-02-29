@@ -13,6 +13,8 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    protected $appends = ['published_date'];
+
     protected static function boot(){
         parent::boot();
         static::deleting(function($post){
@@ -133,6 +135,12 @@ class Post extends Model
             return Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
         });
         return $this->tags()->sync($tagIds);
+    }
+
+    function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->format('M d');
+        // return optional($this->published_at)->format('M d')
     }
 
     public function viewType($home = '')
