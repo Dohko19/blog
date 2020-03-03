@@ -11,11 +11,15 @@ class CategoriesController extends Controller
     {
     	// return $category->load('posts'); opcion
     	// $post = $category->posts;opcion
-    	// return view('welcome', compact('category')) opcion
-
+        // return view('welcome', compact('category')) opcion
+        $posts = $category->posts()->published()->paginate();
+        if(request()->wantsJson())
+        {
+            return  $posts;
+        }
     	return view('pages.home', [
     		'title' => "Publicaciones de la Categoria: '{$category->name}'",
-    		'posts' => $category->posts()->published()->paginate()
+    		'posts' => $posts
     	]);
     }
 }

@@ -4,15 +4,15 @@
 				    <div class="date">
 				        <span class="c-gray-1">
 				        	{{ post.published_date }} / {{ post.owner.name }}
-				            <!-- {{ optional($post->published_at)->format('M d') }} / {{ $post->owner->name }} -->
 
 				        </span>
 				    </div>
 				    <!-- @if ($post->category) -->
 				        <div class="post-category">
 				            <span class="category text-capitalize">
-				                <!-- <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a> -->
-				                <a href="#">{{ post.category.name }}</a>
+				                <router-link :to="{name: 'category_posts', params: {category: post.category.url }}">
+                                    {{ post.category.name }}
+                                </router-link>
 				            </span>
 				        </div>
 				    <!-- @endif -->

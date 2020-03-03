@@ -33,6 +33,11 @@ export default new Router({
             name: 'posts_show',
 			component:  require('./views/PostsShow').default
         },
+		{
+			path: '/categorias/:category',
+            name: 'category_posts',
+			component:  require('./views/CategoryPosts').default
+        },
         // Siempre encima de esta ruta
 		{
 			path: '*',
