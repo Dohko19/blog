@@ -1,6 +1,5 @@
 <template>
-<div>
-	<section class="posts container">
+    <section class="posts container">
 	    <!-- @if (isset($title))
 	        <h2>{{ $title }}</h2>
 	    @endif -->
@@ -22,9 +21,7 @@
 	                <div class="tags container-flex">
 	                    <!-- @include('posts.tags') -->
 							<span class="tag c-gray-1 text-capitalize" v-for="tag in post.tags">
-								<router-link :to="{name: 'tags_posts', params: {tag: tag.url} }">
-                                    #{{ tag.name }}
-                                    </router-link>
+								<a href="#">#{{ tag.name }}</a>
 							</span>
 	                </div>
 	            </footer>
@@ -33,7 +30,7 @@
 
 	    <!-- @empty -->
 
-	     <article class="post" v-if="!posts.length">
+	     <article class="post" v-if="! posts.length">
 
 	        <div class="content-post">
 
@@ -42,33 +39,25 @@
 	    </article>
 
 	    <!-- @endforelse -->
-	</section><!-- fin del div.posts.container -->
-	<!-- {{ $posts->appends(request()->all())->render("pagination::default") }} -->
-	<!--  <div class="pagination">
-	    <ul class="list-unstyled container-flex space-center">
-	        <li><a href="#" class="pagination-active">1</a></li>
-	        <li><a href="#">2</a></li>
-	        <li><a href="#">3</a></li>
-	    </ul>
-</div> -->
-</div>
+	</section>
 </template>
 
+
 <script>
-	export default {
-		data(){
-			return {
-				posts: []
-			}
-		},
-		mounted(){
-			axios.get('/api/posts') //Post controller
-				.then(res => {
-					this.posts = res.data.data;
-				})
-				.catch(err => {
-					console.log(err);
-				})
-		}
-	}
+    export default {
+    	data(){
+    		return{
+    			posts: []
+    		}
+    	},
+	    mounted(){
+	    	axios.get(`/api/etiquetas/${this.$route.params.tag}`)
+	    	.then(res => {
+	    			this.posts = res.data.data;
+	    	})
+	    	.catch(err => {
+	    		console.log(err.response.data);
+	    	})
+	    }
+    }
 </script>
