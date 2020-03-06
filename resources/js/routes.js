@@ -41,7 +41,8 @@ export default new Router({
 		{
 			path: '/etiquetas/:tag',
             name: 'tags_posts',
-			component:  require('./views/TagsPosts').default
+            component:  require('./views/TagsPosts').default,
+            props: true
         },
         // Siempre encima de esta ruta
 		{
