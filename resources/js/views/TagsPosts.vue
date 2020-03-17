@@ -12,25 +12,32 @@
     		}
     	},
 	    mounted(){
-	    	this.getPosts();
-        },
-        beforeRouteUpdate(to, from, next){
-            this.tag = to.params.tag;
-            this.getPosts();
-            console.log(to.params.tag, from.params.tag);
-            next();
-        },
-        methods: {
-                getPosts(){
-                    return axios.get(`/api/etiquetas/${this.tag}`)
+            axios.get(`/api/etiquetas/${this.tag}`)
                         .then(res => {
                                 this.posts = res.data.data;
                         })
                         .catch(err => {
                             console.log(err.response.data);
                         });
-            }
-        },
+	    	// this.getPosts();
+        }
+        // beforeRouteUpdate(to, from, next){
+        //     this.tag = to.params.tag;
+        //     this.getPosts();
+        //     console.log(to.params.tag, from.params.tag);
+        //     next();
+        // },
+        // methods: {
+        //         getPosts(){
+        //             return axios.get(`/api/etiquetas/${this.tag}`)
+        //                 .then(res => {
+        //                         this.posts = res.data.data;
+        //                 })
+        //                 .catch(err => {
+        //                     console.log(err.response.data);
+        //                 });
+        //     }
+        // },
         // watch: {
         //     tag() {
         //         this.getPosts();
