@@ -31,12 +31,14 @@ export default new Router({
 		{
 			path: '/blog/:url',
             name: 'posts_show',
-			component:  require('./views/PostsShow').default
+			component:  require('./views/PostsShow').default,
+            props: true
         },
 		{
 			path: '/categorias/:category',
             name: 'category_posts',
-			component:  require('./views/CategoryPosts').default
+			component:  require('./views/CategoryPosts').default,
+            props: true
         },
 		{
 			path: '/etiquetas/:tag',

@@ -8,9 +8,7 @@
 			<div class="authors-categories">
 				<h3 class="text-capitalize">authors</h3>
 				<ul class="list-unstyled">
-					<!-- @foreach ($authors as $author)
-						<li>{{ $author->name }}</li>
-					@endforeach -->
+					<li v-for="author in authors" v-text="author.name"></li>
 				</ul>
 				<h3 class="text-capitalize">categories</h3>
 				<ul class="list-unstyled">
@@ -19,7 +17,11 @@
 							<a href="{{ route('categories.show',$category) }}">{{ $category->name }}</a>
 						</li>
 					@endforeach -->
-
+					<li v-for="category in categories">
+						<router-link :to="{name: 'category_posts', params: {category: post.category.url }}">
+                                    {{ category.name }}
+                                </router-link>
+					</li>
 				</ul>
 			</div>
 			<div class="latest-posts">
@@ -42,3 +44,25 @@
 	</div>
 </section>
 </template>
+
+<script>
+	export default {
+		data(){
+			return {
+				authors: [],
+				categories: [],
+				posts: [],
+				archive: []
+			}
+		},
+		mounted(){
+			axios.get('/api/archivo')
+			.then(res => {
+				this.authors = res.data.authors;
+				this.categories = res.data.categories;
+				this.posts = res.data.posts;
+				this.archive = res.data.archive;
+			})
+		}
+	}
+</script>
