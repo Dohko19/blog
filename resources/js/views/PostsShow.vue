@@ -9,15 +9,18 @@
         </div>
 
         <footer class="container-flex space-between">
-		      <!-- @include('partials.social-links', ['description' => $post->title]) -->
+          <social-links :description="post.title" />
           <div class="tags container-flex">
-            <!-- @include('posts.tags') -->
+            <div class="tags container-flex">
+              <span class="tag c-gray-1 text-capitalize" v-for="tag in post.tags">
+                <tag-link :tag="tag" />
+              </span>
+            </div>
           </div>
       </footer>
       <div class="comments">
-      <div class="divider"></div>
-        <div id="disqus_thread"></div>
-		<!-- @include('partials.disqus-script') -->
+        <div class="divider"></div>
+        <disqus-comments />
 
       </div><!-- .comments -->
     </div>

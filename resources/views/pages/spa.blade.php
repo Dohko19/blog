@@ -14,7 +14,28 @@
     <script src="{{ asset('adminlte/js/masonry.pkgd.min.js') }}"></script>
 
     @stack('styles')
+    <style>
+    .fade-enter-active, .fade-leave-active {
+              transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
+    }
 
+    /* Enter and leave animations can use different */
+    /* durations and timing functions.              */
+    .slide-fade-enter-active {
+      transition: all .8s ease;
+    }
+    .slide-fade-leave-active {
+      transition: all .6s cubic-bezier(.17, .67, .83, .67);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+      transform: translateY(800px);
+      opacity: 0;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -25,9 +46,11 @@
                 <nav-bar></nav-bar>
             </div>
         </header>
-
-        <router-view :key="$route.fullPath"></router-view>
-
+        <div class="style-wrapper">
+            <transition-group name="slide-fade" mode="out-in">
+                <router-view :key="$route.fullPath"></router-view>
+            <transition-group>
+        </div>
         <section class="footer">
             <footer>
                 <div class="container">

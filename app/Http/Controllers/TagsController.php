@@ -9,7 +9,7 @@ class TagsController extends Controller
 {
     public function show(Tag $tag)
     {
-        $posts = $tag->posts()->published()->paginate(10);
+        $posts = $tag->posts()->published()->paginate(1);
         if(request()->wantsJson())
         {
             return $posts;

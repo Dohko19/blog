@@ -29,7 +29,7 @@ class PagesController extends Controller
     	}
 
 
-    	$posts = $query->paginate();
+    	$posts = $query->paginate(2);
 
         if (request()->wantsJson() )
         {

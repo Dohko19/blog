@@ -18,26 +18,23 @@
 						</li>
 					@endforeach -->
 					<li v-for="category in categories">
-						<router-link :to="{name: 'category_posts', params: {category: post.category.url }}">
-                                    {{ category.name }}
-                                </router-link>
+						<category-link :category="category" />
 					</li>
 				</ul>
 			</div>
 			<div class="latest-posts">
 				<h3 class="text-capitalize">Ultiimas publicaciones</h3>
-				<!-- @foreach ($posts as $post)
-				<p><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></p>
-				@endforeach -->
+
+				<p v-for="post in posts">
+					<post-link :post="post">{{ post.title }}</post-link>
+				</p>
+
 				<h3 class="text-capitalize">Publicaciones por mes</h3>
 				<ul class="list-unstyled">
-					<!-- @foreach ($archive as $date) -->
-					<li class="text-capitalize">
-						<!-- <a href="{{ route('pages.home', ['month' => $date->month, 'year' => $date->year]) }}"> -->
-						<!-- {{ $date->monthname }} {{ $date->year }} ({{ $date->posts }}) -->
+					<li v-for="date in archive" class="text-capitalize">
+						{{ date.month }} {{ date.year }} ({{ date.posts }})
 						</a>
 					</li>
-					<!-- @endforeach -->
 				</ul>
 			</div>
 		</div>

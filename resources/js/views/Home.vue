@@ -1,31 +1,28 @@
 <template>
-<div>
-    <posts-list :posts="posts"></posts-list>
-	<!--  <div class="pagination">
-	    <ul class="list-unstyled container-flex space-center">
-	        <li><a href="#" class="pagination-active">1</a></li>
-	        <li><a href="#">2</a></li>
-	        <li><a href="#">3</a></li>
-	    </ul>
-</div> -->
-</div>
-</template>
+	<div>
+		<paginator url="/api/posts" component-name="posts-list" />
 
+	</div>
+</template>
+<!--
 <script>
-	export default {
+	/**export default {
 		data(){
 			return {
-				posts: []
+				posts: [],
+				pagination: {}
 			}
 		},
 		mounted(){
-			axios.get('/api/posts') //Post controller
+			axios.get(`/api/posts?page=${this.$route.query.page || 1}`) //Post controller
 				.then(res => {
+					this.pagination = res.data;
 					this.posts = res.data.data;
+					delete this.pagination.data;
 				})
 				.catch(err => {
 					console.log(err);
 				})
 		}
-	}
-</script>
+	}**/
+</script> -->
