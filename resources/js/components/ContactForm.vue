@@ -45,10 +45,10 @@
 					this.send = true;
 					this.working = false;
 				})
-				.catch(errors => {
-					this.sent = false;
-					this.working = false;
-				})
+					.catch(errors => {
+						this.sent = false;
+						this.working = false;
+					})
 			}
 		}
 	}

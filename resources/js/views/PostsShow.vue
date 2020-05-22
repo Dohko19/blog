@@ -1,8 +1,5 @@
 <template>
 <section class="post container" style="padding-right: 0px; padding-left: 0px">
-
-  <!-- @include($post->viewType()) -->
-
     <div class="content-post">
         <post-header :post="post"></post-header>
         <div class="image-w-text" v-html="post.body"></div>
