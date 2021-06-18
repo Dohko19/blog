@@ -39,4 +39,28 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     *
+     * private function credentials()
+    {
+        if($this->isNumber( $this->get('username')) ){
+            $loginUsing = 'phone';
+        }else{
+            $loginUsing = filter_var($this->get('username'), FILTER_VALIDATE_EMAIL)
+                ? 'email'
+                : 'username';
+        }
+
+        return [
+          $loginUsing => $this->get('username'),
+          'password' => $this->get('password')
+        ];
+    }
+
+    public function isNumber($value)
+    {
+        return is_numeric($value);
+    }
+     ***/
 }
