@@ -124,6 +124,7 @@ class Post extends Model
 
     public function setCategoryIdAttribute($category)
     {
+    
         $this->attributes['category_id'] = Category::find($category)
                                         ? $category
                                         : Category::create(['name' => $category])->id;
